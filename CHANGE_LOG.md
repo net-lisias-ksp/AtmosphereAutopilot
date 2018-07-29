@@ -1,5 +1,12 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2015-1111: 1.1 (Boris-Barboris) for KSP 1.0.5
+	+ Added moderation button for FbW. Toggles all AoA and G moderation for pitch and yaw.
+	+ Default hotkey for FbW is letter O. Can be changed in config.
+	+ Decreased sideslip control noise in comparison to v1.0.
+	+ Wrong yaw model thrust vector fixed.
+	+ Incorrect Flight Model behaviour when Control From part is changed - fixed.
+	+ Control surfaces now correctly react to reversed airflow (flying backwards). 
 * 2015-1103: 1.0 (Boris-Barboris)
 	+ Initial release, containing single Autopilot - Standard Fly-By-Wire.
