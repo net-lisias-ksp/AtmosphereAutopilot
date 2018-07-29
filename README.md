@@ -1,15 +1,25 @@
-AtmosphereAutopilot
-===================
+AtmosphereAutopilot Unofficial
+==============================
 
 Plugin for Kerbal Space Program.
 
-Original author: Boris-Barboris.
+Original author: Boris-Barboris. Unofficial Fork by Lisias.
 
 Contributors:
 * radistmorse (aka Morse on KSP forums) - Neo-GUI design and implementation.
 * CraigCottingham - Cruise flight and speed control GUI refactoring, coordinate input to waypoint mode.
 
 License: GNU GPL version 3
+
+# In a Hurry
+
+* [Latest Release](https://github.com/net-lisias-kspu/AtmosphereAutopilot/releases)
+* [Source](https://github.com/net-lisias-kspu/AtmosphereAutopilot)
+* [Binaries](https://github.com/net-lisias-kspu/AtmosphereAutopilot/tree/Archive)
+* [Change Log](./CHANGE_LOG.md)
+
+
+
 
 # General description
 Atmosphere autopilot is a modular atmospheric flight control system library. It's meant to be a foundation for multiple high-level programs - "Autopilots", wich will aid KSP player in one way or another, implying atmospheric flight. Autopilots are mutually exclusive - only one or none at all may be active at the active vessel at one given moment. They are provided by the library with means of automatic reflection-based serialization\deserialization and ugly, but lazy and customizable GUI interaction.
