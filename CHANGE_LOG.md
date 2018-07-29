@@ -1,6 +1,8 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-0318: 1.5.1 (Boris-Barboris) for KSP 1.1
+	+ KSP 1.1 beta adaptation release
 * 2016-0318: 1.5 (Boris-Barboris) for KSP 1.0.5
 	+ MiniAVC integration
 	+ Some math, control and logic fixes
