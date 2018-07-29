@@ -1,6 +1,9 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-0406: 1.5.2 (Boris-Barboris) for KSP 1.1
+	+ Fixed crash, connected to changing scenes or vessels.
+	+ Stock aero control surface module respects new authority slider. 
 * 2016-0318: 1.5.1 (Boris-Barboris) for KSP 1.1
 	+ KSP 1.1 beta adaptation release
 * 2016-0318: 1.5 (Boris-Barboris) for KSP 1.0.5
