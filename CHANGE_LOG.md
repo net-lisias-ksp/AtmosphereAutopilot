@@ -1,6 +1,14 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-0129: 1.4 (Boris-Barboris) for KSP 1.0.5
+	+ max_aoa and max_sideslip binding in settings window bugfix
+	+ Reduced CPU loading
+	+ Fixed MOI calculations
+	+ Tweaked regression again to reduce bucking on sustained turns and move a little bit towards v1.2 behaviour
+	+ GUI compacting and recoloring
+	+ Shift+P hotkey for Autopilot module manager GUI
+	+ Cruise flight controller initial implementation
 * 2016-0124: 1.3 (Boris-Barboris) for KSP 1.0.5
 	+ km_Gimbal version 3.0.6.0 and later support.
 	+ various math, model and control fixes.
