@@ -1,6 +1,20 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-0617: 1.5.4 (Boris-Barboris) for KSP 1.1
+	+ fixed bug with incorrect handling of navball in surface velocity mode;
+	+ Mini-AVC version files fixed;
+	+ stock-alike deploy direction of control surfaces under stock aero;
+	+ corrected GUI hiding (F2) code;
+	+ fixed old bug with stock control surfaces, wich snapped deflection to zero on small control signals. Behaviour on extreme dynamic pressure regimes significantly improved under stock aero, for both manual and automated flight;
+	+ new window in AppLauncher window list - "Hotkey manager". Allows to change hotkeys in runtime. Escape to unset hotkey (yes, it pauses the game as well, i know, i hate GUIs);
+speed control setpoint can now be controlled by ThrottleU and 	+ ThrottleDown keys. Can be toggled and tweaked in Prograde thrust controller's GUI, consult docs;
+	+ close window buttons added;
+	+ Cruise Flight window reworked, advanced settings hidden, distance to waypoint readout added;
+	+ Cruise Flight setpoints are controllable by pitch and yaw keys if needed. Right Alt (configurable in hotkeys manager) toggles this behaviour. To toggle and tweak, adress CF window advanced options and docs;
+	+ corrected vertical speed behaviour on very large turns under CF control;
+	+ vertical speed setpoint added to Cruise Flight;
+	+ added hotkeys for Rocket mode and Coordinated turn flags of FBW;
 * 2016-0430: 1.5.3 (Boris-Barboris) for KSP 1.1
 	+ control surface module friendliness to MAF
 	+ internal fixes
