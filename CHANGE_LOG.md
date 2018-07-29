@@ -1,6 +1,12 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2015-1201: 1.2 (Boris-Barboris) for KSP 1.0.5
+	+ Gimbaling speed incorporation in model.
+	+ Prograde thrust controller initial implementation.
+	+ Acceleration controller initial implementation.
+	+ Mouse Director autopilot concept and initial implementation.
+	+ Lot's of bugfixing and mathfixing.
 * 2015-1111: 1.1 (Boris-Barboris) for KSP 1.0.5
 	+ Added moderation button for FbW. Toggles all AoA and G moderation for pitch and yaw.
 	+ Default hotkey for FbW is letter O. Can be changed in config.
