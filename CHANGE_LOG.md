@@ -1,6 +1,14 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-0318: 1.5 (Boris-Barboris) for KSP 1.0.5
+	+ MiniAVC integration
+	+ Some math, control and logic fixes
+	+ Coordinated turn mode for Fly-By-Wire
+	+ Speed control reworked, support of ias, mach, knots
+pseudo-FLC law for ascent of Cruise Flight autopilot
+	+ craft settings window can create autopilot context without pressing master switch
+	+ moder_cutoff_ias parameter visible in ang vel controllers GUI to tune minimal ias, below wich moderation is turned off
 * 2016-0129: 1.4 (Boris-Barboris) for KSP 1.0.5
 	+ max_aoa and max_sideslip binding in settings window bugfix
 	+ Reduced CPU loading
