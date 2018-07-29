@@ -1,6 +1,11 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-0430: 1.5.3 (Boris-Barboris) for KSP 1.1
+	+ control surface module friendliness to MAF
+	+ internal fixes
+	+ max_neg_g of director controller is now serialized
+	+ virtual rotation to improve behaviour on wobbly crafts even without KJR
 * 2016-0406: 1.5.2 (Boris-Barboris) for KSP 1.1
 	+ Fixed crash, connected to changing scenes or vessels.
 	+ Stock aero control surface module respects new authority slider. 
