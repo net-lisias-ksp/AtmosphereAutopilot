@@ -1,6 +1,10 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-0625: 1.5.5 (Boris-Barboris) for KSP 1.1
+	+ 2-seconds input delay for desired speed, course, altitude and vertical speed fields.
+	+ additional hotkeys for speed control toggle (on\off), cruise flight vertical motion control toggle and altitude\vertical speed toggle.
+	+ neo-gui by Morse (http://i.imgur.com/pMWmYuX.jpg), togglable by setting use_neo_gui in GlobalSettings.txt\AtmosphereAutopilot to true. Flag is updated every scene change, no need to restart KSP to toggle.
 * 2016-0617: 1.5.4 (Boris-Barboris) for KSP 1.1
 	+ fixed bug with incorrect handling of navball in surface velocity mode;
 	+ Mini-AVC version files fixed;
