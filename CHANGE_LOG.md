@@ -1,6 +1,11 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-0810: 1.5.7 (Boris-Barboris) for KSP 1.1.3
+	+ ModuleSurfaceFX compatibility
+	+ altitude control is off in neo-gui when switching to cruise flight
+	+ "Use PID" in ProgradeThrustController is globally saved
+	+ Thrust balancer math rewritten
 * 2016-0709: 1.5.6 (Boris-Barboris) for KSP 1.1.3
 	+ Stock aero control surface authority limiter fixed
 	+ Fixed some crashes with cheesy named vessels
