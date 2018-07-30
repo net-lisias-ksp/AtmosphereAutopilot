@@ -1,6 +1,12 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2017-0208: 1.5.10 (Boris-Barboris) for KSP 1.2.1
+	+ moment of inertia math fix
+	+ mod now turns off stock SAS by itself
+	+ distance to waypoint back in GUI
+	+ watch_precision_mode toggle in ang vel controllers GUI toggles 	+ handling of precision mode. Each ang vel controller has separate option.
+	+ precision_mode_factor in config to tune precision input mode factor (0.33 by default). Each ang vel controller has separate option.
 * 2016-1210: 1.5.9 (Boris-Barboris) for KSP 1.2.1
 	+ Version 1.2.1+ control surface module compatibility.
 	+ CruiseFlight autopilot GUI tweaks by CraigCottingham. You can now enter waypoint coordinates in text form.
