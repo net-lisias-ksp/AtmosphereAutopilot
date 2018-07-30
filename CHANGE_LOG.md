@@ -1,6 +1,9 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-1012: 1.5.8 (Boris-Barboris) for KSP 1.2
+	+ KSP v 1.2 compatibility
+	+ Removed ModuleManager from the archive, since it's no longer mandatory for non-FAR installs and with FAR it will be there anyway.
 * 2016-0810: 1.5.7 (Boris-Barboris) for KSP 1.1.3
 	+ ModuleSurfaceFX compatibility
 	+ altitude control is off in neo-gui when switching to cruise flight
