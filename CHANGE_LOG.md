@@ -1,6 +1,9 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-1210: 1.5.9 (Boris-Barboris) for KSP 1.2.1
+	+ Version 1.2.1+ control surface module compatibility.
+	+ CruiseFlight autopilot GUI tweaks by CraigCottingham. You can now enter waypoint coordinates in text form.
 * 2016-1012: 1.5.8 (Boris-Barboris) for KSP 1.2
 	+ KSP v 1.2 compatibility
 	+ Removed ModuleManager from the archive, since it's no longer mandatory for non-FAR installs and with FAR it will be there anyway.
