@@ -1,6 +1,11 @@
 AtmosphereAutopilot :: Change Log
 =================================
 
+* 2016-0709: 1.5.6 (Boris-Barboris) for KSP 1.1.3
+	+ Stock aero control surface authority limiter fixed
+	+ Fixed some crashes with cheesy named vessels
+	+ Sketch of thrust-balancing for VTOL-lovers (very raw, don't expect much), toggled in Flight Model gui by button "balance_engines". Has hotkey ("thrust balancing" in hotkey manager).
+		- Short video: https://youtu.be/8nDSSh-7dQw
 * 2016-0625: 1.5.5 (Boris-Barboris) for KSP 1.1
 	+ 2-seconds input delay for desired speed, course, altitude and vertical speed fields.
 	+ additional hotkeys for speed control toggle (on\off), cruise flight vertical motion control toggle and altitude\vertical speed toggle.
