@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAGpuClient", "AAGpuClient\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AAGpuWrapper", "AAGpuWrapper\AAGpuWrapper.vcxproj", "{3DFB92BB-C1B6-4465-A2F3-895EC952CF18}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{72376F2A-AAF6-46C4-A6B2-1E1B41AA0B6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

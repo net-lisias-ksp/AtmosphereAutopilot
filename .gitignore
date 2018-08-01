@@ -3,3 +3,5 @@ bin
 Sources/.vs
 Sources/*/obj
 Sources/*/Version.cs
+GameData/**/AtmosphereAutopilot.version
+GameData/**/Plugins/*.dll

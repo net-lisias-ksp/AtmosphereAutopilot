@@ -1,0 +1,28 @@
+{
+	"NAME"		: "AtmosphereAutopilot",
+	"DOWNLOAD"	: "https://github.com/net-lisias-kspu/AtmosphereAutopilot/releases",
+	"URL"		: "https://github.com/net-lisias-kspu/AtmosphereAutopilot/AtmosphereAutopilot.version",
+	"CHANGE_LOG"	: "https://github.com/net-lisias-kspu/AtmosphereAutopilot/CHANGE_LOG.md",
+	"CHANGE_LOG_URL": "https://github.com/net-lisias-kspu/AtmosphereAutopilot/CHANGES.md",
+	"GITHUB" : {
+		"USERNAME"   : "net-lisias-kspu",
+		"REPOSITORY" : "AtmosphereAutopilot",
+		"ALLOW_PRE_RELEASE" : false
+		},
+	"VERSION":{
+		"MAJOR":1,
+		"MINOR":5,
+		"PATCH":10,
+		"BUILD":0
+		},
+	"KSP_VERSION":{
+		"MAJOR":1,
+		"MINOR":2,
+		"PATCH":2
+		},
+	"KSP_VERSION_MIN":{
+		"MAJOR":1,
+		"MINOR":2,
+		"PATCH":1
+		}
+}
