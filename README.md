@@ -1,5 +1,4 @@
-AtmosphereAutopilot Unofficial
-==============================
+# AtmosphereAutopilot Unofficial
 
 Plugin for Kerbal Space Program.
 
@@ -11,7 +10,7 @@ Contributors:
 
 License: GNU GPL version 3
 
-# In a Hurry
+## In a Hurry
 
 * [Latest Release](https://github.com/net-lisias-kspu/AtmosphereAutopilot/releases)
 * [Source](https://github.com/net-lisias-kspu/AtmosphereAutopilot)
@@ -19,26 +18,27 @@ License: GNU GPL version 3
 * [Change Log](./CHANGE_LOG.md)
 
 
-
-
-# General description
+## General description
 Atmosphere autopilot is a modular atmospheric flight control system library. It's meant to be a foundation for multiple high-level programs - "Autopilots", wich will aid KSP player in one way or another, implying atmospheric flight. Autopilots are mutually exclusive - only one or none at all may be active at the active vessel at one given moment. They are provided by the library with means of automatic reflection-based serialization\deserialization and ugly, but lazy and customizable GUI interaction.
 
 Autopilots are modular entities. They can use basic, provided by main library components (like controllers and models), or they can define their own components and share them with other Autopilots. Those components will be called "Autopilot modules", or simply - "Modules". Every sealed child of AutopilotModule wich is not a StateController is treated by the library like a Module. Sealed StateController children are treated as Autopilots.
 
 Stock and FAR aerodynamics are supported. Plugin is dependent on ModuleManager by sarbian, and is shipped with Mini-AVC plugin by cybutek.
 
-# GUI concept
+
+## GUI concept
 AA icon is placed in Application Launcher toolbar during flight. It's contents will visualize a list of all Autopilots and Modules, created for active vessel. For every vessel "Autopilot Module Manager" will be created regardless. Turning on a "MASTER SWITCH" on it's window will create required context of Autopilots and Modules for this vessel. Under the master switch all Autopilots will be listed, for the user to choose one of them as an active one. Hotkey for Master switch is letter P, autoPilot. Can be changed in Global_settings.cfg file, Autopilot_module_manager section.
 
 Craft settings window contains shotrcuts to most used moderation and tuning parameters of the craft, as well as provides basic preset functionality. Presets are saved in "Global_settings.cfg"/settings_wnd/profiles section.
 
 Each Autopilot and Module has it's own GUI window. All of them (even inactive ones) are accessible from AA button in Application Launcher, some of them are accessible from Autopilot window hierarchy (that's up to Autopilot developer to decide, what particular Modules should be accessible from it's GUI). Window positions are serialized (preserved between flights and game sessions) in "Global_settings.cfg" file.
 
-# Neo-GUI
+
+## Neo-GUI
 Alternative, more condensed but less powerfull way of representing AppLauncher window can be turned on by setting AtmosphereAutopilot/use_neo_gui to _true_ in Global_settings.txt config file. It is read every scene change, so the shift can be made without shutting KSP down. While it's active, "Autopilot Module Manager" is still accessible using hotkeys. Standard GUI has logical priority over Neo-GUI.
 
-# Hotkeys
+
+## Hotkeys
 "Hotkey manager" window is placed into Application Launcher window list. It's contents are registered hotkeys, wich can be changed during runtime.
 There are two main hotkeys: 
 * "Master switch" - toggles Master Switch.
@@ -46,14 +46,15 @@ There are two main hotkeys:
 
 Others are very module-specific and will not be described here.
 
-# Craft implications and limitations
+
+## Craft implications and limitations
 "Control from here" part is facing prograde, with close-to-zero angle of attack bias. Planar symmetry is implied (left and right side of the plane are mirrored), as well as good degree of pitch-yaw and pitch-roll control isolation. Axial engine symmetry is strongly recommended. No wind mods are supported, as well as any mods, wich are changing control surface, rcs and engine gimbaling behaviour.
 
 **WARNING: DO NOT USE AEROBRAKES AS CONTROL SURFACES, USE THEM ONLY AS BRAKES!**
 
-# Default Autopilots descriptions
+## Default Autopilots descriptions
 
-## Standard Fly-By-Wire
+### Standard Fly-By-Wire
 In general, FBW (Fly-By-Wire) is an abstraction Autopilot. It is designed to aid in player-controlled flight on generic (space)plane, providing a soft layer between user joystick\keyboard input and control surface outputs.
 Main goals:
 * Auto-trimming.
@@ -120,9 +121,9 @@ Hotkeys:
 * "CF vertical control" - toggles _Vertical motion control_.
 * "CF altitude\vertical speed" - toggles between _Altitude_ and _Vertical speed_ modes.
 
-# Default Modules descriptions
+## Default Modules descriptions
 
-## Flight Model
+### Flight Model
 It is a fundamental craft analysis module. It performs motion and dynamics evaluation, as well as analysis of craft aerodynamics. VTOL engine balancing is also handled by Flight Model (though it will probably change in the future). This Module will probably be used by every single other Autopilot and module.
 
 Short GUI description (consult source code for more deatils and insight):
@@ -157,7 +158,7 @@ Short GUI description (consult source code for more deatils and insight):
 Hotkeys:
 * "Thrust balancing" - toggles _balance engines_ button.
 
-## Director controller
+### Director controller
 Middle-level model-reference controller, follows a setpoint of surface velocity and acceleration vectors. Input: velocity vector and acceleration vector. Output: AoA, sideslip and roll angular velocity.
 
 Short GUI description:
@@ -188,7 +189,7 @@ Short GUI description:
 * _desired aoa_ - output to "AoA controller".
 * _desired sideslip_ - output to "Sideslip controller".
 
-## Pitch, roll and yaw angular acceleration controllers
+### Pitch, roll and yaw angular acceleration controllers
 Low level model-reference angular acceleration controllers. Input: desired angular acceleration. Output: pitch\roll\yaw control state.
 
 Short GUI description:
@@ -200,7 +201,7 @@ Short GUI description:
 * _angular acc_ - angular acceleration, duplicate of Flight Model _ang acc_ field.
 * _output_ - control state output, is passed to vessel in FlightCtrlState object.
 
-## Pitch and yaw angular velocity controllers
+### Pitch and yaw angular velocity controllers
 Model-reference controllers, that perform pitch and yaw angular velocity control with respect to moderation and controllability restrictions. Input: [-1, 1] user input or desired angular velocity. Output: desired angular acceleration, passed to angular acceleration controller.
 
 When navball is in surface mode, controller is dealing with surface-oriented reference frame. Zero input will keep zero angular velocity relative to the ground - useful on planes. In orbit navball mode inertial reference frame will be used - usefull for spacecrafts. Precision mode (CAPS LOCK) multiplies input by the factor of 0.33 (_precision mode factor_ option in global_settings.txt) to provide more precise control, or to aid with control on high physical warp regimes. To ignore precision mode, unser _watch precision mode_ toggle in respected ang vel controllers.
@@ -236,7 +237,7 @@ Short GUI description:
 * _Max v construction_ - default value - 0.5 (rad/sec). Global angular velocity restriction. Is introduced to provide comfortable control by limiting vessel rotation capabilities. 0.5 is good for most crafts. Serialized on per-design basis.
 * _desired v_ - desired angular velocity, not yet processed by moderation.
 
-## Roll angular velocity controllers
+### Roll angular velocity controllers
 Model-reference controller, that perform roll angular velocity control and wing leveling. Input: [-1, 1] user input or desired angular velocity. Output: desired angular acceleration, passed to angular acceleration controller.
 
 Precision mode (CAPS LOCK) divides input by the factor of 3 to provide more precise control, or to aid with control on high physical warp regimes.
@@ -248,7 +249,7 @@ Short GUI description (except identical from previous module):
 * _angle btw hor sin_ - sinus of the horizont angle.
 * _snapping Kp_ - snapping speed gain. Default avlue - 0.25. Larger values seem to be too agressive, too large oscillate.
 
-## AoA and Sideslip controllers
+### AoA and Sideslip controllers
 Model-reference controllers with self-explanatory names. Input: [-1, 1] user input or desired AoA. Output: desired angular velocity. Both require respective angular velocity controllers to have AoA moderation on, because it uses respective angular velocity controller limitation values as governers.
 
 Short GUI description:
@@ -263,7 +264,7 @@ Short GUI description:
 * _cubic KP_ - default value 0.3. Gain for cubic profile steepness evaluation.
 * _cubic mode_ - true if controller is now in cubic mode.
 
-## Prograde thrust controller
+### Prograde thrust controller
 Hybrid model-reference or PID controller. Input: desired surface velocity. Output: throttle. Can be switched to PID control and manually tuned, if user is not satisfied with it's performance.
 
 Short GUI description:
@@ -285,3 +286,12 @@ Short GUI description:
 Hotkeys:
 * "Throttle keys" - alter velocity setpoint by using stock throttle hotkeys (Shift and LCntrl by default).
 * "Speed control toggle" - toggles speed control ON and OFF.
+
+
+## UPSTREAM
+
+* [Boris-Barboris](https://forum.kerbalspaceprogram.com/index.php?/profile/133181-boris-barboris/)
+	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/124417-122-142-dlc-atmosphereautopilot-1510-looking-for-maintainer/)
+	+ [CurseForge](https://kerbal.curseforge.com/projects/atmosphereautopilot)
+	+ [SpaceDock](https://spacedock.info/mod/683/AtmosphereAutopilot)
+	+ [GitHub](https://github.com/Boris-Barboris/AtmosphereAutopilot)
