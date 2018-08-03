@@ -29,6 +29,8 @@ VERSIONFILE=$PACKAGE.version
 
 check
 cp $VERSIONFILE "./GameData/$TARGETDIR"
-deploy AtmosphereAutopilot
-deploy AtmosphereAutopilot.UI
+cp CHANGE_LOG.md "./GameData/$TARGETDIR"
+cp README.md  "./GameData/$TARGETDIR"
+cp LICENSE "./GameData/$TARGETDIR"
+deploy $PACKAGE
 
