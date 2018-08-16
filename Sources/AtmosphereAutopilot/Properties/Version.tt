@@ -27,7 +27,7 @@
 	int i2 = 0;
 	string s;
 
-	string versionfile =  this.Host.ResolvePath("../../AtmosphereAutopilot.version");
+	string versionfile =  this.Host.ResolvePath("../../../AtmosphereAutopilot.version");
 	if (!File.Exists(versionfile))
 	{
 		Write("File: " + versionfile + " missing\n");		

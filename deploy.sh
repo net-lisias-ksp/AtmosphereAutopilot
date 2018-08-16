@@ -32,5 +32,7 @@ cp $VERSIONFILE "./GameData/$TARGETDIR"
 cp CHANGE_LOG.md "./GameData/$TARGETDIR"
 cp README.md  "./GameData/$TARGETDIR"
 cp LICENSE "./GameData/$TARGETDIR"
-deploy $PACKAGE
+for dll in AtmosphereAutopilot.UI AtmosphereAutopilot ; do
+    deploy $dll
+done
 

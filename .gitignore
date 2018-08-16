@@ -1,7 +1,10 @@
+.vs
 Archive
 bin
-Sources/.vs
-Sources/*/obj
-Sources/*/Version.cs
-GameData/**/AtmosphereAutopilot.version
+obj
+Sources/**/Properties/Version.cs
+GameData/**/README.md
+GameData/**/CHANGE_LOG.md
+GameData/**/LICENSE
+GameData/**/*.version
 GameData/**/Plugins/*.dll

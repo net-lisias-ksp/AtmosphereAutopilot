@@ -12,11 +12,13 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <BaseIntermediateOutputPath>..\..\obj\AtmosphereAutopilot.GUI</BaseIntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
+    <BaseIntermediateOutputPath>..\..\obj\AtmosphereAutopilot.GUI</BaseIntermediateOutputPath>
     <OutputPath>..\..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -25,6 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+    <BaseIntermediateOutputPath>..\..\obj\AtmosphereAutopilot.GUI</BaseIntermediateOutputPath>
     <OutputPath>..\..\bin\Release\</OutputPath>
     <DefineConstants>
     </DefineConstants>
@@ -54,13 +57,13 @@
     <Compile Include="NeoGUI\MainMenuGUI.cs" />
     <Compile Include="Properties\AssemblyInfo.GUI.cs" />
     <Compile Include="NeoGUI\Utils\StyleApplicator.cs" />
-    <Compile Include="Version.cs">
+    <Compile Include="Properties/Version.cs">
       <DependentUpon>Version.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Version.tt">
+    <None Include="Properties/Version.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Version.cs</LastGenOutput>
     </None>

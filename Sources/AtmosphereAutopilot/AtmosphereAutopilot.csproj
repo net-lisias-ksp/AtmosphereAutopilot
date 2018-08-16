@@ -12,11 +12,13 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <BaseIntermediateOutputPath>..\..\obj\AtmosphereAutopilot</BaseIntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
+    <BaseIntermediateOutputPath>..\..\obj\AtmosphereAutopilot</BaseIntermediateOutputPath>
     <OutputPath>..\..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -26,12 +28,13 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+    <BaseIntermediateOutputPath>..\..\obj\AtmosphereAutopilot</BaseIntermediateOutputPath>
     <OutputPath>..\..\bin\Release\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\AtmosphereAutopilot.XML</DocumentationFile>
+    <DocumentationFile>../../bin\Release\AtmosphereAutopilot.XML</DocumentationFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -115,11 +118,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MessageManager.cs" />
     <Compile Include="SyncModuleControlSurface.cs" />
-    <None Include="Version.tt">
+    <None Include="Properties\Version.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Version.cs</LastGenOutput>
     </None>
-    <Compile Include="Version.cs">
+    <Compile Include="Properties\Version.cs">
       <DependentUpon>Version.tt</DependentUpon>
     </Compile>
   </ItemGroup>
