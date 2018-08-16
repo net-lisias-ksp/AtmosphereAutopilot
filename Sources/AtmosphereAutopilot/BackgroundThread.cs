@@ -37,10 +37,10 @@ namespace AtmosphereAutopilot
 
         TextWriter logger;
 
-        public BackgroundThread(string log_folder_name)
+        public BackgroundThread(string log_pathname)
         {
             thread = new Thread(new ThreadStart(cycle));
-            logger = File.CreateText(log_folder_name + "/thread.log");
+            logger = File.CreateText(log_pathname);
         }
 
         public void Start()

@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using System.IO;
 using UnityEngine;
 
 namespace AtmosphereAutopilot
@@ -68,19 +69,36 @@ namespace AtmosphereAutopilot
     /// </summary>
     public static class AutoSerialization
     {
+        private const string PATHNAME = "PluginData/AtmosphereAutopilot";
+
+        public static string SolvePath (string dir, string filename, bool autocreate = false)
+        {
+            string path = Path.Combine(KSPUtil.ApplicationRootPath, PATHNAME);
+            path = null != dir ? Path.Combine(path, dir) : path;
+            if (autocreate && !Directory.Exists(path)) Directory.CreateDirectory(path);
+            path = Path.Combine(path, filename);
+            return path;
+        }
+        public static string SolvePath(string filename, bool autocreate = false)
+        {
+            return SolvePath(null, filename, autocreate);
+        }
+
         /// <summary>
         /// Deserialize object from file
         /// </summary>
         /// <param name="obj">Object to deserialize</param>
         /// <param name="node_name">Node to search for in file</param>
-        /// <param name="filename">full file path</param>
+        /// <param name="dir">relative path</param>
+        /// <param name="filename">filename (no path)</param>
         /// <param name="attribute_type">Type of attributes to deserialize</param>
         /// <param name="OnDeserialize">Callback for custom behaviour, 
         /// called after automatic part is over and didn't crash. Gets node, 
         /// from wich object was deserialized and attribute type.</param>
         /// <returns>true if node_name node was found and used to deserialize the object</returns>
-        public static bool Deserialize(object obj, string node_name, string filename, Type attribute_type, Action<ConfigNode, Type> OnDeserialize = null)
+        public static bool Deserialize(object obj, string node_name, string dir, string filename, Type attribute_type, Action<ConfigNode, Type> OnDeserialize = null)
         {
+            filename = SolvePath(dir, filename);
             try
             {
                 if (System.IO.File.Exists(filename))
@@ -113,23 +131,37 @@ namespace AtmosphereAutopilot
         }
 
         /// <summary>
+        /// Deserialize object from file
+        /// </summary>
+        /// <param name="obj">Object to deserialize</param>
+        /// <param name="node_name">Node to search for in file</param>
+        /// <param name="filename">filename (no path)</param>
+        /// <param name="attribute_type">Type of attributes to deserialize</param>
+        /// <param name="OnDeserialize">Callback for custom behaviour, 
+        /// called after automatic part is over and didn't crash. Gets node, 
+        /// from wich object was deserialized and attribute type.</param>
+        /// <returns>true if node_name node was found and used to deserialize the object</returns>
+        public static bool Deserialize(object obj, string node_name, string filename, Type attribute_type, Action<ConfigNode, Type> OnDeserialize = null)
+        {
+            return Deserialize(obj, node_name, null, filename, attribute_type, OnDeserialize);
+        }
+
+        /// <summary>
         /// Serialize object to file
         /// </summary>
         /// <param name="obj">Object to serialize</param>
         /// <param name="node_name">Node to create in file</param>
-        /// <param name="filename">full file path</param>
+        /// <param name="dir">relative path</param>
+        /// <param name="filename">filename (no path)</param>
         /// <param name="attribute_type">Type of attributes to serialize</param>
         /// <param name="OnSerialize">Callback for custom behaviour, 
         /// called after automatic part is over and didn't crash. Gets node, 
         /// to wich object was serialized to and attribute type.</param>
-        public static void Serialize(object obj, string node_name, string filename, Type attribute_type,
-            Action<ConfigNode, Type> OnSerialize = null)
+        public static void Serialize(object obj, string node_name, string dir, string filename, Type attribute_type, Action<ConfigNode, Type> OnSerialize = null)
         {
+            filename = SolvePath(dir, filename, true);
             try
             {
-                string dir = System.IO.Path.GetDirectoryName(filename);
-                if (!System.IO.Directory.Exists(dir))
-                    System.IO.Directory.CreateDirectory(dir);
                 ConfigNode fileNode = ConfigNode.Load(filename);
                 if (fileNode == null)
                     fileNode = new ConfigNode();
@@ -149,6 +181,21 @@ namespace AtmosphereAutopilot
             {
                 Debug.Log("[AtmosphereAutopilot]: Serialization exception in path " + filename + " message " + err.Message);
             }
+        }
+
+        /// <summary>
+        /// Serialize object to file
+        /// </summary>
+        /// <param name="obj">Object to serialize</param>
+        /// <param name="node_name">Node to create in file</param>
+        /// <param name="filename">filename (no path)</param>
+        /// <param name="attribute_type">Type of attributes to serialize</param>
+        /// <param name="OnSerialize">Callback for custom behaviour, 
+        /// called after automatic part is over and didn't crash. Gets node, 
+        /// to wich object was serialized to and attribute type.</param>
+        public static void Serialize(object obj, string node_name, string filename, Type attribute_type, Action<ConfigNode, Type> OnSerialize = null)
+        {
+            Serialize(obj, node_name, null, filename, attribute_type, OnSerialize);
         }
 
         public static void DeserializeFromNode(ConfigNode node, object obj, Type attribute_type)

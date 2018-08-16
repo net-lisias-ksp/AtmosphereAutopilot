@@ -144,7 +144,7 @@ namespace AtmosphereAutopilot
         public void Serialize()
         {
             AutoSerialization.Serialize(this, "hotkey_manager",
-                KSPUtil.ApplicationRootPath + "GameData/AtmosphereAutopilot/Global_settings.txt",
+                "Global_settings.txt",
                 typeof(GlobalSerializable));
         }
 
@@ -154,7 +154,7 @@ namespace AtmosphereAutopilot
         public bool Deserialize()
         {
             return AutoSerialization.Deserialize(this, "hotkey_manager",
-                KSPUtil.ApplicationRootPath + "GameData/AtmosphereAutopilot/Global_settings.txt",
+                "Global_settings.txt",
                 typeof(GlobalSerializable));
         }
 

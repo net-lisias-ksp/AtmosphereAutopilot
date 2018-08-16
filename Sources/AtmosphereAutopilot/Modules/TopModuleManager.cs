@@ -456,7 +456,7 @@ namespace AtmosphereAutopilot
 
             public bool Deserialize()
             {
-                return AutoSerialization.Deserialize(this, "settings_wnd", KSPUtil.ApplicationRootPath + "GameData/AtmosphereAutopilot/Global_settings.txt",
+                return AutoSerialization.Deserialize(this, "settings_wnd", "Global_settings.txt",
                     typeof(GlobalSerializable), OnDeserialize);
             }
 

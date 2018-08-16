@@ -157,7 +157,7 @@ namespace AtmosphereAutopilot
         
         void initialize_thread()
         {
-            thread = new BackgroundThread(KSPUtil.ApplicationRootPath + "GameData/AtmosphereAutopilot");
+            thread = new BackgroundThread(AutoSerialization.SolvePath("thread.log", true));
         }
 
         void OnApplicationPause()
@@ -277,7 +277,7 @@ namespace AtmosphereAutopilot
                 if (_prefabs == null)
                 {
                     var path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                    path = path.Replace(System.IO.Path.GetFileName(path), "atmosphereautopilotprefabs");
+                    path = path.Replace(System.IO.Path.GetFileName(path), "atmosphereautopilot.prefabs");
                     var www = new WWW("file://" + path);
                     _prefabs = www.assetBundle;
                 }
@@ -290,7 +290,7 @@ namespace AtmosphereAutopilot
         {
             // deserialize use_neo_gui flag
             AutoSerialization.Deserialize(this, "AtmosphereAutopilot",
-                KSPUtil.ApplicationRootPath + "GameData/AtmosphereAutopilot/Global_settings.txt",
+                "Global_settings.txt",
                 typeof(GlobalSerializable), null);
 
             if (prefabs == null)
