@@ -1,5 +1,10 @@
 # AtmosphereAutopilot :: Change Log
 
+* 2018-0821: 1.5.11.1 (Lisias) for KSP 1.4.x
+	+ Merging (new) fixes from upstream v1.5.11.0:
+		- Gimbal rearrangement regression fixed, gimbal-controlled vessels should feel as good as they did in 1.3.X KSP.
+		- director strength parameter is in craft settings.
+		- CF waypoint can now be entered in text. Mouse picking on the map gets dedicated button.
 * 2018-0816: 1.5.10.2 (Lisias) for KSP 1.4.x
 	+ Moving settings/configurations/log to <KSP_ROOT>/PluginData, where God intended it to be. :)
 * 2018-0731: 1.5.10.1 (Lisias) for KSP 1.4.x
@@ -10,7 +15,8 @@
 	+ moment of inertia math fix
 	+ mod now turns off stock SAS by itself
 	+ distance to waypoint back in GUI
-	+ watch_precision_mode toggle in ang vel controllers GUI toggles 	+ handling of precision mode. Each ang vel controller has separate option.
+	+ watch_precision_mode toggle in ang vel controllers GUI toggles
+	+ handling of precision mode. Each ang vel controller has separate option.
 	+ precision_mode_factor in config to tune precision input mode factor (0.33 by default). Each ang vel controller has separate option.
 * 2016-1210: 1.5.9 (Boris-Barboris) for KSP 1.2.1
 	+ Version 1.2.1+ control surface module compatibility.
