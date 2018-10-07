@@ -1,14 +1,15 @@
-# AtmosphereAutopilot Unofficial
+# AtmosphereAutopilot (Archive)
 
 Plugin for Kerbal Space Program.
 
 Original author: Boris-Barboris. Unofficial Fork by Lisias.
 
 Contributors:
+
 * radistmorse (aka Morse on KSP forums) - Neo-GUI design and implementation.
 * CraigCottingham - Cruise flight and speed control GUI refactoring, coordinate input to waypoint mode.
+* Hotel26 - usability fixes for old-GUI Cruise flight waypoint control.
 
-License: GNU GPL version 3
 
 ## In a Hurry
 
@@ -40,7 +41,9 @@ Alternative, more condensed but less powerfull way of representing AppLauncher w
 
 ## Hotkeys
 "Hotkey manager" window is placed into Application Launcher window list. It's contents are registered hotkeys, wich can be changed during runtime.
+
 There are two main hotkeys: 
+
 * "Master switch" - toggles Master Switch.
 * Shift + "Master switch" - toggles GUI of "Autopilot Module Manager".
 
@@ -56,7 +59,9 @@ Others are very module-specific and will not be described here.
 
 ### Standard Fly-By-Wire
 In general, FBW (Fly-By-Wire) is an abstraction Autopilot. It is designed to aid in player-controlled flight on generic (space)plane, providing a soft layer between user joystick\keyboard input and control surface outputs.
+
 Main goals:
+
 * Auto-trimming.
 * AoA and G-force moderation.
 * Sideslip handling.
@@ -67,6 +72,7 @@ FBW uses three controllers - pitch, roll and yaw. Pitch is handled by "Pitch ang
 "Coordinated turn" - pseudo-pitch hold to assist in performing coordinated turns.
 
 Hotkeys: 
+
 * "FBW moderation" - default hotkey for Moderation is letter O, mOderation.
 * "FBW rocket mode" - default hotkey unassigned.
 * "FBW coord turn" - default hotkey unassigned.
@@ -86,12 +92,15 @@ Speed control - throttle automation to maintain speed setpoint. Handeled by "Pro
 Cruise Flight (CF) is high-level autopilot, designet for travel automation. Just like MD, CF is inherently-linear, so only relatively small angles of attack are allowed. All AoA moderations are forcefully turned on during it's work.
 
 CF uses "Director controller" for controlling velocity vector and "Prograde thrust controller" for throttle automation.
+
 Functions:
+
 * Simple leveling.
 * Baromethric height and airspeed control.
 * Primitive waypoint functionality, picking point on planet surface (mouse click) on the map and flying to it.
 
 Short GUI description:
+
 * _Level_ - simple leveling regime. Upon activation, CF will save surface-relative inclination of velocity and will follow it. If altitude is not set, will keep vertical speed at zero.
 * _Course_ - follows azimuth setpoint, set in field _desired course_. If altitude is not set, will keep vertical speed at zero. On high latitudes (>80 degrees) will switch to _Level_ mode.
 * _Waypoint_ - primitive waypoint following. Designed for pick-and-fly functionality. When activated, _pick waypoint_ button appears under mode tabs, as well as waypoint latitude-longtitude representation and distance to it in straight line (through planet core). Waypoint control is turned off when destination is closer than 200 meters to be followed by _Level_ mode activation.
@@ -102,6 +111,7 @@ Short GUI description:
 * _Vertical speed_ - hold vertical speed, meters per second.
 
 "Advanced options" description:
+
 * _pseudo-FLC_ - toggle for pseudo-FLC (Flight Level Change) control law for ascend. Will force CF to respect speed setpoint and craft thrust parameters when choosing ascent angle.
 * _flc margin_ - default value 15 m/s. Span of pseudo-FLC algorithm relaxation region. Decrease if don't want to tolerate errors in speed. Algorithm will not converge below some minimal value, so be careful.
 * _strength mult_ - default value 0.75. Will be multiplied in the runtime on Director controller's strength to restrain maneuvers. Tune to achieve slover or faster behaviour.
@@ -115,6 +125,7 @@ Short GUI description:
 * _hotkey vertspeed snap_ - tweak to manage vertical speed snap to zero margin.
 
 Hotkeys:
+
 * "Pitch keys" - alter vertical motion setpoint, altitude or vertical speed (whatever is active at the moment).
 * "Yaw keys" - alter course setpoint.
 * "CF keys input mode" - default hotkey is _Right Alt_, toggles whether Pitch and yaw is used to control setpoints.
@@ -127,6 +138,7 @@ Hotkeys:
 It is a fundamental craft analysis module. It performs motion and dynamics evaluation, as well as analysis of craft aerodynamics. VTOL engine balancing is also handled by Flight Model (though it will probably change in the future). This Module will probably be used by every single other Autopilot and module.
 
 Short GUI description (consult source code for more deatils and insight):
+
 * Three sections for three craft principal axes, each contains:
   * _ang vel_ - angular velocity of a craft as a mechanical system of rigid bodies, radians / second. Positive for pitch up, yaw right, roll right.
   * _ang acc_ - angular acceleration, produced by numerical diffirentiation.
@@ -156,13 +168,15 @@ Short GUI description (consult source code for more deatils and insight):
 * two vectors on engine torque linear estimations. They are used to adress gimbaling capabilities of a craft.
 
 Hotkeys:
+
 * "Thrust balancing" - toggles _balance engines_ button.
 
 ### Director controller
 Middle-level model-reference controller, follows a setpoint of surface velocity and acceleration vectors. Input: velocity vector and acceleration vector. Output: AoA, sideslip and roll angular velocity.
 
 Short GUI description:
-* _strength_ - default value 0.95. Measure of agressiveness of acceleration output of MD. Precise control multiplies output acceleration by the factor of 0.4.
+
+* _strength_ - default value 0.95. Measure of agressiveness of acceleration output of MD. Precise control multiplies output acceleration by the factor of 0.4. Serialized per vessel design.
 * _roll stop k_ - default value 1.0, used to prevent overshooting, magic number.
 * _angular error_ - error in radians between desired velocity vector and current one.
 * _max angular v_ - estimate on current maneuver maximum angular velocity.
@@ -190,9 +204,10 @@ Short GUI description:
 * _desired sideslip_ - output to "Sideslip controller".
 
 ### Pitch, roll and yaw angular acceleration controllers
-Low level model-reference angular acceleration controllers. Input: desired angular acceleration. Output: pitch\roll\yaw control state.
+Low level dynamics inversion angular acceleration controllers. Input: desired angular acceleration (and yaw output for roll controller). Output: pitch\roll\yaw control state.
 
 Short GUI description:
+
 * _Csurf output_ - current expected virtual control surface position, wich is usually lagged from control signal.
 * _write telemetry_ button - primitive logging capability for further matlab analysis. .csv logs are saved in KSP\Resources directory to be read by plotter.m viewer. It is a debug utility.
 * _desired acc_ - desired acceleration, passed to this controller from above.
@@ -268,6 +283,7 @@ Short GUI description:
 Hybrid model-reference or PID controller. Input: desired surface velocity. Output: throttle. Can be switched to PID control and manually tuned, if user is not satisfied with it's performance.
 
 Short GUI description:
+
 * _pid Kp_ - if used in PID mode, it's the proportional PID gain.
 * _pid Ki_ - integrad PID gain.
 * _pid Kd_ - derivative PID gain.
@@ -284,8 +300,38 @@ Short GUI description:
 * _use_throttle_hotkeys_ - toggle speed setpoint handling by hotkeys.
 
 Hotkeys:
+
 * "Throttle keys" - alter velocity setpoint by using stock throttle hotkeys (Shift and LCntrl by default).
 * "Speed control toggle" - toggles speed control ON and OFF.
+
+
+## Installation
+
+To install, place the GameData folder inside your Kerbal Space Program folder.
+
+**REMOVE ANY OLD VERSIONS OF THE PRODUCT BEFORE INSTALLING**.
+
+### Dependencies
+<!--
+* Hard Dependencies
+	* [KSP API Extensions/L](https://github.com/net-lisias-ksp/KSPAPIExtensions)
+->
+None at the moment. :)
+
+### Licensing
+This work is licensewd under the [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.txt). See [here](./LICENSE)
+
++ You are free to:
+	- Use : unpack and use the material in any computer or device
+	- Redistribute : redistribute the original package in any medium
+	- Adapt : Reuse, modify or incorporate source code into your works (and redistribute it!) 
++ Under the following terms:
+	- You retain any copyright notices
+	- You recognize and respect any trademarks
+	- You don't impersonate the authors, neither redistribute a derivative that could be misrepresented as theirs.
+	- You credit the author and republish the copyright notices on your works where the code is used.
+	- You relicense (and fully comply) your works using GPL 2.0 (or later)
+	- You don't mix your work with GPL incompatible works.
 
 
 ## UPSTREAM
@@ -295,3 +341,4 @@ Hotkeys:
 	+ [CurseForge](https://kerbal.curseforge.com/projects/atmosphereautopilot)
 	+ [SpaceDock](https://spacedock.info/mod/683/AtmosphereAutopilot)
 	+ [GitHub](https://github.com/Boris-Barboris/AtmosphereAutopilot)
+
