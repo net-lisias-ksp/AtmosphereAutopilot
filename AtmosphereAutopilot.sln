@@ -3,20 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmosphereAutopilot", "AtmosphereAutopilot\AtmosphereAutopilot.csproj", "{D8C77EB2-8B40-4ECB-9DA2-29682020C89B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmosphereAutopilot", "Source\AtmosphereAutopilot\AtmosphereAutopilot.csproj", "{D8C77EB2-8B40-4ECB-9DA2-29682020C89B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingConsole", "TestingConsole\TestingConsole.csproj", "{FE12F262-92A5-4D94-B34C-E536FEBE651D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingConsole", "Source\TestingConsole\TestingConsole.csproj", "{FE12F262-92A5-4D94-B34C-E536FEBE651D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmosphereAutopilot.GUI", "AtmosphereAutopilot\AtmosphereAutopilot.GUI.csproj", "{3DBF4445-889C-4342-BDD6-35BEED699A14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtmosphereAutopilot.GUI", "Source\AtmosphereAutopilot\AtmosphereAutopilot.GUI.csproj", "{3DBF4445-889C-4342-BDD6-35BEED699A14}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AAGpu", "AAGpu\AAGpu.vcxproj", "{2FAD385F-1672-4EEF-8D43-50C31AC5D0D6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AAGpu", "Source\AAGpu\AAGpu.vcxproj", "{2FAD385F-1672-4EEF-8D43-50C31AC5D0D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAGpuClient", "AAGpuClient\AAGpuClient.csproj", "{4A748F05-6D70-44C8-BC7D-E853CA9242A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AAGpuClient", "Source\AAGpuClient\AAGpuClient.csproj", "{4A748F05-6D70-44C8-BC7D-E853CA9242A2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3DFB92BB-C1B6-4465-A2F3-895EC952CF18} = {3DFB92BB-C1B6-4465-A2F3-895EC952CF18}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AAGpuWrapper", "AAGpuWrapper\AAGpuWrapper.vcxproj", "{3DFB92BB-C1B6-4465-A2F3-895EC952CF18}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AAGpuWrapper", "Source\AAGpuWrapper\AAGpuWrapper.vcxproj", "{3DFB92BB-C1B6-4465-A2F3-895EC952CF18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{72376F2A-AAF6-46C4-A6B2-1E1B41AA0B6E}"
 EndProject
