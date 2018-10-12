@@ -14,8 +14,8 @@ Contributors:
 ## In a Hurry
 
 * [Latest Release](https://github.com/net-lisias-kspu/AtmosphereAutopilot/releases)
+    + [Binaries](https://github.com/net-lisias-kspu/AtmosphereAutopilot/tree/Archive)
 * [Source](https://github.com/net-lisias-kspu/AtmosphereAutopilot)
-* [Binaries](https://github.com/net-lisias-kspu/AtmosphereAutopilot/tree/Archive)
 * [Change Log](./CHANGE_LOG.md)
 
 
