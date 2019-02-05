@@ -44,6 +44,10 @@ namespace AtmosphereAutopilot
             if (!HighLogic.LoadedSceneIsFlight) return;
             if (already_checked) return;
                    
+            // This code is needed due savegames previous from the AA first installation (as well crafts, and also ones
+            // downloaded or copied from other savegames) looses the condiguration when loaded with AA.
+            // Only savegames and crafts made after AA installation have their Control Surfaces settings restoned!
+            // Onde this small inconvenience =P is fixed, this code can go away.
             if (part.symMethod == SymmetryMethod.Mirror && 
                 part.symmetryCounterparts != null &&
                 part.symmetryCounterparts.Count > 0)
