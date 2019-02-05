@@ -33,30 +33,29 @@ namespace AtmosphereAutopilot
         protected float prev_yaw_action = 0.0f;
 
         protected bool was_deployed = false;
+        protected bool already_checked = false;
 
         public override void OnStart(PartModule.StartState state)
         {
             base.OnStart(state);
-            if (HighLogic.LoadedSceneIsFlight)
+            
+            if (!HighLogic.LoadedSceneIsFlight) return;
+            if (already_checked) return;
+                   
+            if (part.symMethod == SymmetryMethod.Mirror && 
+                part.symmetryCounterparts != null &&
+                part.symmetryCounterparts.Count > 0)
             {
-                if (!usesMirrorDeploy)
-                {
-                    usesMirrorDeploy = true;
-                    mirrorDeploy = false;
-                    if (part.symMethod == SymmetryMethod.Mirror && 
-                        part.symmetryCounterparts != null &&
-                        part.symmetryCounterparts.Count > 0)
-                    {
-                        Part p = part.symmetryCounterparts[0];
-                        this.mirrorDeploy = 
-                            (Mathf.Abs(part.transform.localRotation.w) < Mathf.Abs(p.transform.localRotation.w))
-                            ||
-                            (Mathf.Abs(part.transform.localRotation.w) == Mathf.Abs(p.transform.localRotation.w) 
-                                && part.transform.localRotation.x < p.transform.localRotation.x)
-                            ;
-                    }
-                }
+                usesMirrorDeploy = true;
+                Part p = part.symmetryCounterparts[0];
+                this.mirrorDeploy = 
+                    (Mathf.Abs(part.transform.localRotation.w) < Mathf.Abs(p.transform.localRotation.w))
+                    ||
+                    (Mathf.Abs(part.transform.localRotation.w) == Mathf.Abs(p.transform.localRotation.w) 
+                        && part.transform.localRotation.x < p.transform.localRotation.x)
+                    ;
             }
+            already_checked = true;
         }
 
         protected override void CtrlSurfaceUpdate(Vector3 vel)
