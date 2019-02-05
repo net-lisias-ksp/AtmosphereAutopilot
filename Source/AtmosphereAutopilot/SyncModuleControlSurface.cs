@@ -26,6 +26,7 @@ namespace AtmosphereAutopilot
     /// Synchronised ModuleControlSurface realization, greatly simplifies control and flight model regression 
     /// by making all control surfaces move in one phase.
     /// </summary>
+    [KSPModule("ModuleControlSurface")]﻿ 
     public class SyncModuleControlSurface: ModuleControlSurface
     {
         public const float CSURF_SPD = 2.0f;
@@ -37,6 +38,11 @@ namespace AtmosphereAutopilot
         protected bool was_deployed = false;
         protected bool already_checked = false;
 
+        public override void OnAwake()
+        {
+            base.OnAwake();
+        }
+        
         public override void OnStart(PartModule.StartState state)
         {
             base.OnStart(state);
@@ -62,6 +68,18 @@ namespace AtmosphereAutopilot
                     ;
             }
             already_checked = true;
+        }
+
+        public override void OnSave(ConfigNode node)
+        {
+            base.OnSave(node);
+
+            // Hack to prevent AA to hijack the savagames and craft files.
+            // MODULE sections with name="ModuleControlSurface" not only is ignored by this partModule, but once this is 
+            // saved with name="SyncModuleControlSurface", only KSP installments with AA installed will correctly handle it,
+            // and that disconfigure all Contol Surfaces parts when you uninstall AA!!      
+            node.SetValue("name", "ModuleControlSurface", false);
+            node.SetValue("AtmosphericAutopilot", true, true);
         }
 
         protected override void CtrlSurfaceUpdate(Vector3 vel)
