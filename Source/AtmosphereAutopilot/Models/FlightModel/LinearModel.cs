@@ -24,6 +24,7 @@ using System.IO;
 
 namespace AtmosphereAutopilot
 {
+    using SyncModuleControlSurface = global::AtmosphereAutopilot.ModuleControlSurface; // Gambiarra para minimizar mudanças no código
 
     using Vector = VectorArray.Vector;
 

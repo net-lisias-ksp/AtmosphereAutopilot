@@ -22,6 +22,7 @@ using UnityEngine;
 
 namespace AtmosphereAutopilot
 {
+    using SyncModuleControlSurface = global::AtmosphereAutopilot.ModuleControlSurface; // Gambiarra para minimizar mudanças no código
 
     /// <summary>
     /// Controls surface velocity vector

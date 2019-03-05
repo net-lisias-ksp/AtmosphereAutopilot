@@ -23,6 +23,8 @@ using System.IO;
 
 namespace AtmosphereAutopilot
 {
+    using SyncModuleControlSurface = global::AtmosphereAutopilot.ModuleControlSurface; // Gambiarra para minimizar mudanças no código
+
     /// <summary>
     /// Controls angular acceleration. Meant to be used by AngularVelAdaptiveController
     /// </summary>

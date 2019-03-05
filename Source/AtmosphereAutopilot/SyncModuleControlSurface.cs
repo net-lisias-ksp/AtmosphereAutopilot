@@ -21,13 +21,14 @@ using UnityEngine;
 
 namespace AtmosphereAutopilot
 {
+    using KspModuleControlSurface = global::ModuleControlSurface;
 
     /// <summary>
     /// Synchronised ModuleControlSurface realization, greatly simplifies control and flight model regression 
     /// by making all control surfaces move in one phase.
     /// </summary>
     [KSPModule("ModuleControlSurface")]﻿ 
-    public class SyncModuleControlSurface: ModuleControlSurface
+    public class ModuleControlSurface: KspModuleControlSurface
     {
         public const float CSURF_SPD = 2.0f;
 
@@ -43,32 +44,33 @@ namespace AtmosphereAutopilot
             base.OnAwake();
         }
         
-        public override void OnStart(PartModule.StartState state)
-        {
-            base.OnStart(state);
+        //public override void OnStart(PartModule.StartState state)
+        //{
+        //    base.OnStart(state);
             
-            if (!HighLogic.LoadedSceneIsFlight) return;
-            if (already_checked) return;
-                   
-            // This code is needed due savegames previous from the AA first installation (as well crafts, and also ones
-            // downloaded or copied from other savegames) looses the condiguration when loaded with AA.
-            // Only savegames and crafts made after AA installation have their Control Surfaces settings restoned!
-            // Onde this small inconvenience =P is fixed, this code can go away.
-            if (part.symMethod == SymmetryMethod.Mirror && 
-                part.symmetryCounterparts != null &&
-                part.symmetryCounterparts.Count > 0)
-            {
-                usesMirrorDeploy = true;
-                Part p = part.symmetryCounterparts[0];
-                this.mirrorDeploy = 
-                    (Mathf.Abs(part.transform.localRotation.w) < Mathf.Abs(p.transform.localRotation.w))
-                    ||
-                    (Mathf.Abs(part.transform.localRotation.w) == Mathf.Abs(p.transform.localRotation.w) 
-                        && part.transform.localRotation.x < p.transform.localRotation.x)
-                    ;
-            }
-            already_checked = true;
-        }
+        //    if (!HighLogic.LoadedSceneIsFlight) return;
+        //    if (already_checked) return;
+        //    already_checked = true;
+
+        //    if (usesMirrorDeploy) return;                 
+        //    // This code is needed due savegames previous from the AA first installation (as well crafts, and also ones
+        //    // downloaded or copied from other savegames) looses the condiguration when loaded with AA.
+        //    // Only savegames and crafts made after AA installation have their Control Surfaces settings restoned!
+        //    // Onde this small inconvenience =P is fixed, this code can go away.
+        //    if (part.symMethod == SymmetryMethod.Mirror && 
+        //        part.symmetryCounterparts != null &&
+        //        part.symmetryCounterparts.Count > 0)
+        //    {
+        //        usesMirrorDeploy = true;
+        //        Part p = part.symmetryCounterparts[0];
+        //        this.mirrorDeploy = 
+        //            (Mathf.Abs(part.transform.localRotation.w) < Mathf.Abs(p.transform.localRotation.w))
+        //            ||
+        //            (Mathf.Abs(part.transform.localRotation.w) == Mathf.Abs(p.transform.localRotation.w) 
+        //                && part.transform.localRotation.x < p.transform.localRotation.x)
+        //            ;
+        //    }
+        //}
 
         public override void OnSave(ConfigNode node)
         {
@@ -78,8 +80,8 @@ namespace AtmosphereAutopilot
             // MODULE sections with name="ModuleControlSurface" not only is ignored by this partModule, but once this is 
             // saved with name="SyncModuleControlSurface", only KSP installments with AA installed will correctly handle it,
             // and that disconfigure all Contol Surfaces parts when you uninstall AA!!      
-            node.SetValue("name", "ModuleControlSurface", false);
-            node.SetValue("AtmosphericAutopilot", true, true);
+            //node.SetValue("name", "ModuleControlSurface", false);
+            //node.SetValue("AtmosphericAutopilot", true, true);
         }
 
         protected override void CtrlSurfaceUpdate(Vector3 vel)
