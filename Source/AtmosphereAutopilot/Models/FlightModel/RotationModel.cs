@@ -231,7 +231,7 @@ namespace AtmosphereAutopilot
                 Quaternion delta = Quaternion.AngleAxis(ang_delta, cntrl_part_to_world * avg_angvel);
                 virtualRotation = Quaternion.Lerp(vessel.ReferenceTransform.rotation,
                     delta * virtualRotation, aoa_virtual_gain);
-                virtualRotation = virtualRotation.Normalize();
+                virtualRotation = virtualRotation.Normalize(); // TODO: On mainstream, this line is now virtualRotation.Normalize(); -- whats kinda of pointless, no? Check if it's an error
             }
 
             angular_vel_prev = angular_vel;
