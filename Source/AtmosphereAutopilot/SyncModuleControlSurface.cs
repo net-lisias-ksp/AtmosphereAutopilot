@@ -102,7 +102,7 @@ namespace AtmosphereAutopilot
 
             float spd_factor = TimeWarp.fixedDeltaTime * CSURF_SPD;
             float fwd_airstream_factor = Mathf.Sign(Vector3.Dot(vessel.ReferenceTransform.up, vessel.srf_velocity) + 0.1f);
-            float exp_spd_factor = actuatorSpeed / actuatorSpeedNormScale * TimeWarp.fixedDeltaTime;
+            float exp_spd_factor = useExponentialSpeed ? (actuatorSpeed / actuatorSpeedNormScale * TimeWarp.fixedDeltaTime) :  0.0f;
 
             if (deploy)
             {
@@ -110,12 +110,13 @@ namespace AtmosphereAutopilot
                 if (float.IsNaN(normaction))
                     normaction = 0.0f;
                 float target = deployInvert ? 1.0f : -1.0f;
+                target *= partDeployInvert ? -1.0f : 1.0f;
                 if (usesMirrorDeploy && mirrorDeploy) target *= -1.0f;
                 if (!ignorePitch)   prev_pitch_normdeflection = target;
                 if (!ignoreRoll)    prev_roll_normdeflection = target;
                 if (!ignoreYaw)     prev_yaw_normdeflection = target;
                 was_deployed = true;
-                action = target;
+                action = deployAngle * target;
                 deflection = deflection + deployAngle * Common.Clampf(target - normdeflection, spd_factor);
                 ctrlSurface.localRotation = Quaternion.AngleAxis(deflection, Vector3.right) * neutral;
                 return;
