@@ -25,7 +25,7 @@ namespace AtmosphereAutopilot
                 {
                     if (list[partLoaderIdx].GetType() == typeof(PartLoader))
                     {
-                        Debug.Log("[AtmosphereAutopilot]: PartLoader loader found, injecting mod loaders before it");
+                        Log.info("PartLoader loader found, injecting mod loaders before it");
                         GameObject go = new GameObject("GimbalRearranger");
                         Rearranger ra = go.AddComponent<Rearranger>();
                         CSurfaceReplacer re = go.AddComponent<CSurfaceReplacer>();
@@ -36,7 +36,7 @@ namespace AtmosphereAutopilot
                     partLoaderIdx++;
                 }
                 if (partLoaderIdx == list.Count)
-                    Debug.LogError("[AtmosphereAutopilot]: PartLoader loader not found, unable to rearrange gimbals");
+                    Log.error("PartLoader loader not found, unable to rearrange gimbals");
             }
 
             DontDestroyOnLoad(this);
@@ -64,7 +64,7 @@ namespace AtmosphereAutopilot
                         if (move_node_first(gimbal_node, part))
                         {
                             handle_ModuleSurfaceFX(part);
-                            Debug.Log("[AtmosphereAutopilot]: part '" + part.GetValue("name") + "' config node contains ModuleGimbal, moving it");
+                            Log.info("part '{0}' config node contains ModuleGimbal, moving it", part.GetValue("name"));
                         }
                     }
                     else if ((gimbal_node = part.nodes.GetNode("MODULE", "name", "KM_Gimbal_3")) != null)
@@ -72,7 +72,7 @@ namespace AtmosphereAutopilot
                         if (move_node_first(gimbal_node, part))
                         {
                             handle_ModuleSurfaceFX(part);
-                            Debug.Log("[AtmosphereAutopilot]: part '" + part.GetValue("name") + "' config node contains KM_Gimbal_3, moving it");
+                            Log.info("part '{0}' config node contains KM_Gimbal_3, moving it", part.GetValue("name"));
                         }
                     }
                 }
@@ -134,7 +134,7 @@ namespace AtmosphereAutopilot
                     ConfigNode csurf_node;
                     if ((csurf_node = part.nodes.GetNode("MODULE", "name", "ModuleControlSurface")) != null)
                     {
-                        Debug.Log("[AtmosphereAutopilot]: part '" + part.GetValue("name") + "' config node contains ModuleControlSurface, replacing it");
+                        Log.info("part '{0}' config node contains ModuleControlSurface, replacing it", part.GetValue("name"));
                         csurf_node.SetValue("name", "SyncModuleControlSurface", false);
                     }
                 }

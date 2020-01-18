@@ -257,7 +257,7 @@ namespace AtmosphereAutopilot
             }
             A[0, 1] = 1.0;
 
-            //Debug.Log("A =\r\n" + A.ToString() + "B =\r\n" + B.ToString() + "C =\r\n" + C.ToString());
+            Log.dbg("A =\n{0}\nB =\n{1}\nC =\n{0}", A, B, C);
         }
 
         void update_roll_rot_model()
@@ -581,7 +581,7 @@ namespace AtmosphereAutopilot
             }
             A[0, 1] = 1.0;
 
-            //Debug.Log("A =\r\n" + A.ToString() + "B =\r\n" + B.ToString() + "C =\r\n" + C.ToString());
+            Log.dbg("A =\n{0}\nB =\n{1}\nC =\n{0}", A, B, C);
         }
     }
 }

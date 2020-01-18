@@ -87,7 +87,7 @@ namespace AtmosphereAutopilot
                 Assembly km_asm = AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name.Equals("km_Gimbal"));
                 if (km_asm == null)
                     return false;
-                Debug.Log("[AtmosphereAutopilot]: km_Gimbal assembly version " + km_asm.GetName().Version.ToString() + " found");
+                Log.info("km_Gimbal assembly version {0} found", km_asm.GetName().Version);
                 gimbal_type = km_asm.GetType("km_Gimbal.KM_Gimbal_3");
                 if (gimbal_type == null)
                     return false;
@@ -98,7 +98,7 @@ namespace AtmosphereAutopilot
                 if (f_enableGimbal == null || f_enableSmoothGimbal == null || f_useExponentGimbal == null || f_expResponseSpeed == null)
                     return false;
                 else
-                    Debug.Log("[AtmosphereAutopilot]: km_Gimbal is reflected without errors");
+                    Log.info("km_Gimbal is reflected without errors");
                 return true;
             }
             catch

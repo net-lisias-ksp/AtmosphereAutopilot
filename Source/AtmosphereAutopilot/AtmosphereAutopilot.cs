@@ -56,7 +56,7 @@ namespace AtmosphereAutopilot
 
         void Start()
         {
-            Debug.Log("[AtmosphereAutopilot]: starting up!"); 
+            Log.info("starting up!"); 
             DontDestroyOnLoad(this);
             determine_aerodynamics();
             get_csurf_module();
@@ -97,7 +97,7 @@ namespace AtmosphereAutopilot
                 {
                     far_assembly = a;
                     AeroModel = AerodinamycsModel.FAR;
-                    Debug.Log("[AtmosphereAutopilot]: FAR aerodynamics detected");
+                    Log.info("FAR aerodynamics detected");
                     return;
                 }
             }
@@ -144,7 +144,7 @@ namespace AtmosphereAutopilot
                 }
                 catch (Exception)
                 {
-                    Debug.Log("[AtmosphereAutopilot]: reflection crash on " + asmbly.FullName + " assembly.");
+                    Log.info("reflection crash on {0} assembly.", asmbly.FullName);
                 }
             }
         }
@@ -207,7 +207,7 @@ namespace AtmosphereAutopilot
                 return;
             if (!autopilot_module_lists.ContainsKey(v))
             {
-                Debug.Log("[AtmosphereAutopilot]: new vessel, creating new module map for " + v.vesselName);
+                Log.info("new vessel, creating new module map for {0}", v.vesselName);
                 autopilot_module_lists[v] = new Dictionary<Type, AutopilotModule>();
             }
             if (!autopilot_module_lists[v].ContainsKey(typeof(TopModuleManager)))
@@ -219,7 +219,7 @@ namespace AtmosphereAutopilot
         void vesselSwitch(Vessel v)
         {
             serialize_active_modules();
-            Debug.Log("[AtmosphereAutopilot]: vessel switch to " + v.vesselName);
+            Log.info("vessel switch to " + v.vesselName);
             load_manager_for_vessel(v);
             mainMenuClose();
             ActiveVessel = v;
@@ -232,16 +232,16 @@ namespace AtmosphereAutopilot
 
         void clean_modules()
         {
-            Debug.Log("[AtmosphereAutopilot]: cleaning modules hash table");
+            Log.detail("cleaning modules hash table");
             var vesselsToRemove = autopilot_module_lists.Keys.Where(v => v.state == Vessel.State.DEAD).ToArray();
             foreach (var v in vesselsToRemove)
             {
                 var manager = autopilot_module_lists[v][typeof(TopModuleManager)];
                 manager.Deactivate();
                 autopilot_module_lists.Remove(v);
-                Debug.Log("[AtmosphereAutopilot]: removed vessel " + v.vesselName);
+                Log.detail("removed vessel {0}", v.vesselName);
                 if (autopilot_module_lists.ContainsKey(v))
-                    Debug.Log("[AtmosphereAutopilot]: Logical error, not removed from keys");
+                    Log.warn("Logical error, not removed from keys");
             }
         }
 
@@ -297,7 +297,7 @@ namespace AtmosphereAutopilot
 
             if (prefabs == null)
             {
-                Debug.Log("[AtmosphereAutopilot]: No prefabs found, Neo-GUI unavailable");
+                Log.warn("No prefabs found, Neo-GUI unavailable");
                 use_neo_gui = false;
             }
 

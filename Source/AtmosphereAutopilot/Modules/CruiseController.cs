@@ -430,8 +430,8 @@ namespace AtmosphereAutopilot
 				if (!target.Landed) MessageManager.post_quick_message($"target {target.vesselName} is not landed");
 				current_waypt.longitude = target.longitude;
 				current_waypt.latitude = target.latitude;
-				Debug.Log($"[AtmosphereAutopilot] target lat {current_waypt.latitude} lon {current_waypt.longitude}");
-				desired_latitude.Value = (float)current_waypt.latitude;
+                Log.info("target lat {0} lon {1}", current_waypt.latitude, current_waypt.longitude);
+                desired_latitude.Value = (float)current_waypt.latitude;
 				desired_longitude.Value = (float)current_waypt.longitude;
 				AtmosphereAutopilot.Instance.mainMenuGUIUpdate();
 				WaypointMode = true;
@@ -447,7 +447,7 @@ namespace AtmosphereAutopilot
 			} else {
 				current_waypt.longitude = navPoint.Longitude;
 				current_waypt.latitude = navPoint.Latitude;
-				Debug.Log($"[AtmosphereAutopilot] waypoint lat {current_waypt.latitude} lon {current_waypt.longitude}");
+				Log.info("waypoint lat {0} lon {1}", current_waypt.latitude, current_waypt.longitude);
 				desired_latitude.Value = (float)current_waypt.latitude;
 				desired_longitude.Value = (float)current_waypt.longitude;
 				AtmosphereAutopilot.Instance.mainMenuGUIUpdate();

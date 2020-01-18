@@ -179,10 +179,10 @@ namespace AtmosphereAutopilot
                 }
             }
 
-            //Debug.Log("A = \r\n" + optimizer.A.ToString());
-            //Debug.Log("b = \r\n" + optimizer.b.ToString());
-            //Debug.Log("c = \r\n" + optimizer.c.ToString());
-            //Debug.Log("x = \r\n" + optimizer.x.ToString());
+            Log.dbg("A = {0}\n{0}", optimizer.A);
+            Log.dbg("b = {0}\n{0}", optimizer.b);
+            Log.dbg("c = {0}\n{0}", optimizer.c);
+            Log.dbg("x = {0}\n{0}", optimizer.x);
         }
 
         [AutoGuiAttr("balancer_steering_k", true, "G4")]
