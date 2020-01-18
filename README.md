@@ -1,4 +1,4 @@
-# AtmosphereAutopilot Unofficial
+# AtmosphereAutopilot /L Unofficial
 
 Plugin for Kerbal Space Program.
 
