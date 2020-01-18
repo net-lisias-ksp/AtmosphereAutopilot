@@ -7,9 +7,23 @@ check() {
 		rm -f "./GameData/$TARGETBINDIR/"
 		mkdir -p "./GameData/$TARGETBINDIR/"
 	fi
+
+	if [ ! -f "./GameData/$TARGETBINDIR/KSPe.Light.TweakScale.dll" ] ; then
+		echo "KSPe.Light.TweakScale not found!!! Aborting."
+		read line
+		exit -1
+	fi
 }
 
-deploy() {
+deploy_dev() {
+	local DLL=$1
+
+	if [ -f "./bin/Release/$DLL.dll" ] ; then
+		cp "./bin/Release/$DLL.dll" "$LIB"
+	fi
+}
+
+deploy_bin() {
 	local DLL=$1
 
 	if [ -f "./bin/Release/$DLL.dll" ] ; then
@@ -25,14 +39,23 @@ deploy() {
 	fi
 }
 
+deploy_md() {
+	local MD=$1
+	#![NxMyyTK.png](./PR_material/img/NxMyyTK.png)
+	sed $MD -e "s/!\\[.\+\\]\\(.\+\\)//g" > "./GameData/$TARGETDIR"/$MD
+}
+
 VERSIONFILE=$PACKAGE.version
 
 check
 cp $VERSIONFILE "./GameData/$TARGETDIR"
 cp CHANGE_LOG.md "./GameData/$TARGETDIR"
-cp README.md  "./GameData/$TARGETDIR"
 cp LICENSE "./GameData/$TARGETDIR"
 cp NOTICE "./GameData/$TARGETDIR"
-for dll in $PACKAGE $PACKAGE.UI ; do
-    deploy $dll
+deploy_md README.md
+
+
+for dll in Scale $DLLS ; do
+    deploy_dev $dll
+    deploy_bin $dll
 done
