@@ -1,5 +1,7 @@
 # AtmosphereAutopilot :: Change Log
 
+* 2019-0614: 1.5.14 (BorisBarboris) for KSP 1.7.1
+	+ Fix bug when AA was unable to distinguish landed, splashed and flying situations, causing uncontrollability after model collapse.
 * 2019-0302: 1.5.12 (BorisBarboris) for KSP 1.6.1
 	+ Adds Tgt and Wpt buttons to the Cruise Flight controller waypoint display.  Copies the current lon/lat of the Target or Waypoint, if one is selected, to the lon/lat display and begins navigation to the waypoint.
 * 2018-0819: 1.5.11 (BorisBarboris) for KSP 1.4.5
