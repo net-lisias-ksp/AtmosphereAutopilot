@@ -7,12 +7,6 @@ check() {
 		rm -f "./GameData/$TARGETBINDIR/"
 		mkdir -p "./GameData/$TARGETBINDIR/"
 	fi
-
-	if [ ! -f "./GameData/$TARGETBINDIR/KSPe.Light.TweakScale.dll" ] ; then
-		echo "KSPe.Light.TweakScale not found!!! Aborting."
-		read line
-		exit -1
-	fi
 }
 
 deploy_dev() {

@@ -1,7 +1,7 @@
 source ../CONFIG.inc
 
 PACKAGE=AtmosphereAutopilot
-TARGETDIR="$PACKAGE"
+TARGETDIR="net.lisias.ksp/$PACKAGE"
 TARGETBINDIR="$TARGETDIR/Plugins"
 PROJECTSDIR="Sources/"
 DLLS="AtmosphereAutopilot AtmosphereAutopilot.UI"
