@@ -289,7 +289,7 @@ namespace AtmosphereAutopilot
             {
                 if (_prefabs == null)
                 {
-                    string path = KSPe.IO.File<AtmosphereAutopilot>.Asset.Solve("atmosphereautopilot.prefabs");
+                    string path = KSPe.IO.File<AtmosphereAutopilot>.Asset.Solve(string.Format("atmosphereautopilot.{0}.prefabs", KSPe.Util.UnityTools.UnityVersion));
                     _prefabs = AssetBundle.LoadFromFile(path);
                 }
                 return _prefabs;
