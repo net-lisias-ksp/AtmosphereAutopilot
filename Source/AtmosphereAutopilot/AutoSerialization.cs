@@ -69,16 +69,13 @@ namespace AtmosphereAutopilot
     /// </summary>
     public static class AutoSerialization
     {
-        private const string PATHNAME = "PluginData/AtmosphereAutopilot";
-
         public static string SolvePath (string dir, string filename, bool autocreate = false)
         {
-            string path = Path.Combine(KSPUtil.ApplicationRootPath, PATHNAME);
-            path = null != dir ? Path.Combine(path, dir) : path;
-            if (autocreate && !Directory.Exists(path)) Directory.CreateDirectory(path);
-            path = Path.Combine(path, filename);
-            return path;
+            string r = KSPe.IO.File<AtmosphereAutopilot>.Data.Solve(dir, filename);
+            if (autocreate && !Directory.Exists(r)) Directory.CreateDirectory(r);
+            return r;
         }
+
         public static string SolvePath(string filename, bool autocreate = false)
         {
             return SolvePath(null, filename, autocreate);

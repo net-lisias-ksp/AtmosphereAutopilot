@@ -24,6 +24,8 @@ using System.Reflection;
 using KSP.UI.Screens;
 //using ToolbarWrapper;
 
+using Asset = KSPe.IO.Asset<AtmosphereAutopilot.AtmosphereAutopilot>;
+
 namespace AtmosphereAutopilot
 {
     using SyncModuleControlSurface = global::AtmosphereAutopilot.ModuleControlSurface; // Gambiarra para minimizar mudanças no código
@@ -278,10 +280,8 @@ namespace AtmosphereAutopilot
             {
                 if (_prefabs == null)
                 {
-                    var path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-                    path = path.Replace(System.IO.Path.GetFileName(path), "atmosphereautopilot.prefabs");
-                    var www = new WWW("file://" + path);
-                    _prefabs = www.assetBundle;
+                    string path = KSPe.IO.File<AtmosphereAutopilot>.Asset.Solve("atmosphereautopilot.prefabs");
+                    _prefabs = AssetBundle.LoadFromFile(path);
                 }
                 return _prefabs;
             }
@@ -333,7 +333,8 @@ namespace AtmosphereAutopilot
                         launcher_btn = ApplicationLauncher.Instance.AddModApplication(
                             OnALTrue, OnALFalse, OnHover, OnALUnHover, null, null,
                             ApplicationLauncher.AppScenes.FLIGHT | ApplicationLauncher.AppScenes.MAPVIEW,
-                            GameDatabase.Instance.GetTexture("AtmosphereAutopilot/icon", false));
+                            Asset.Texture2D.LoadFromFile("icons", "toolbar")
+                        );
                 }
             }
         }
