@@ -9,15 +9,15 @@
 	+ Fix bug when AA was unable to distinguish landed, splashed and flying situations, causing uncontrollability after model collapse.
 * 2019-0302: 1.5.12 (BorisBarboris) for KSP 1.6.1
 	+ Adds Tgt and Wpt buttons to the Cruise Flight controller waypoint display.  Copies the current lon/lat of the Target or Waypoint, if one is selected, to the lon/lat display and begins navigation to the waypoint.
-* 2018-0819: 1.5.11 (BorisBarboris) for KSP 1.4.5
-	+ Gimbal rearrangement regression fixed, gimbal-controlled vessels should feel as good as they did in 1.3.X KSP.
-		- director strength* parameter is in craft settings.
-	+ CF waypoint can now be entered in text. Mouse picking on the map gets dedicated button.
 * 2018-0821: 1.5.11.1 (Lisias) for KSP 1.4.x
 	+ Merging (new) fixes from upstream v1.5.11.0:
 		- Gimbal rearrangement regression fixed, gimbal-controlled vessels should feel as good as they did in 1.3.X KSP.
-		- director strength parameter is in craft settings.
+		- *director strength* parameter is in craft settings.
 		- CF waypoint can now be entered in text. Mouse picking on the map gets dedicated button.
+* 2018-0819: 1.5.11 (BorisBarboris) for KSP 1.4.5
+	+ Gimbal rearrangement regression fixed, gimbal-controlled vessels should feel as good as they did in 1.3.X KSP.
+		- *director strength* parameter is in craft settings.
+	+ CF waypoint can now be entered in text. Mouse picking on the map gets dedicated button.
 * 2018-0816: 1.5.10.2 (Lisias) for KSP 1.4.x
 	+ Moving settings/configurations/log to <KSP_ROOT>/PluginData, where God intended it to be. :)
 * 2018-0731: 1.5.10.1 (Lisias) for KSP 1.4.x
