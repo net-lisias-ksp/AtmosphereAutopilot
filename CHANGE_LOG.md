@@ -1,5 +1,8 @@
 # AtmosphereAutopilot :: Change Log
 
+* 2019-0715: 1.5.15 (BorisBarboris) for KSP 1.7.3
+	+ Do not replace control surface module for parts that contain "propeller" or "blade" in their name.
+	+ Default 0.95 value for dir_strength.
 * 2019-0614: 1.5.14 (BorisBarboris) for KSP 1.7.1
 	+ Fix bug when AA was unable to distinguish landed, splashed and flying situations, causing uncontrollability after model collapse.
 * 2019-0302: 1.5.12 (BorisBarboris) for KSP 1.6.1
