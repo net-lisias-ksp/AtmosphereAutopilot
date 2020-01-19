@@ -71,8 +71,9 @@ namespace AtmosphereAutopilot
     {
         public static string SolvePath (string dir, string filename, bool autocreate = false)
         {
-            string r = KSPe.IO.File<AtmosphereAutopilot>.Data.Solve(dir, filename);
-            if (autocreate && !Directory.Exists(r)) Directory.CreateDirectory(r);
+            string r = KSPe.IO.File<AtmosphereAutopilot>.Data.Solve(dir??".", filename);
+            string d = Path.GetDirectoryName(r);
+            if (autocreate && !Directory.Exists(d)) Directory.CreateDirectory(d);
             return r;
         }
 

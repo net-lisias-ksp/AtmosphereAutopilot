@@ -18,7 +18,6 @@ along with Atmosphere Autopilot.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using System.Reflection;
 using KSP.UI.Screens;
@@ -288,6 +287,8 @@ namespace AtmosphereAutopilot
         // Called when applauncher is ready for population
         void onAppLauncherLoad()
         {
+            Log.detail("onAppLauncherLoad");
+
             // deserialize use_neo_gui flag
             AutoSerialization.Deserialize(this, "AtmosphereAutopilot",
                 "Global_settings.txt",
