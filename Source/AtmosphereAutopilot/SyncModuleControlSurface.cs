@@ -2,7 +2,7 @@
 Atmosphere Autopilot, plugin for Kerbal Space Program.
 Copyright (C) 2015-2016, Baranin Alexander aka Boris-Barboris.
 
-Changes (c) 2019, LisiasT
+Changes (c) 2019-2020 LisiasT
  
 Atmosphere Autopilot is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,8 +27,7 @@ namespace AtmosphereAutopilot
     /// Synchronised ModuleControlSurface realization, greatly simplifies control and flight model regression 
     /// by making all control surfaces move in one phase.
     /// </summary>
-    [KSPModule("ModuleControlSurface")]﻿ 
-    public class ModuleControlSurface: KspModuleControlSurface
+    public class SyncModuleControlSurface : KspModuleControlSurface
     {
         public const float CSURF_SPD = 2.0f;
 
@@ -42,35 +41,36 @@ namespace AtmosphereAutopilot
         public override void OnAwake()
         {
             base.OnAwake();
+            Log.dbg("It's me, Mario!!!");
         }
-        
-        //public override void OnStart(PartModule.StartState state)
-        //{
-        //    base.OnStart(state);
-            
-        //    if (!HighLogic.LoadedSceneIsFlight) return;
-        //    if (already_checked) return;
-        //    already_checked = true;
 
-        //    if (usesMirrorDeploy) return;                 
-        //    // This code is needed due savegames previous from the AA first installation (as well crafts, and also ones
-        //    // downloaded or copied from other savegames) looses the condiguration when loaded with AA.
-        //    // Only savegames and crafts made after AA installation have their Control Surfaces settings restoned!
-        //    // Onde this small inconvenience =P is fixed, this code can go away.
-        //    if (part.symMethod == SymmetryMethod.Mirror && 
-        //        part.symmetryCounterparts != null &&
-        //        part.symmetryCounterparts.Count > 0)
-        //    {
-        //        usesMirrorDeploy = true;
-        //        Part p = part.symmetryCounterparts[0];
-        //        this.mirrorDeploy = 
-        //            (Mathf.Abs(part.transform.localRotation.w) < Mathf.Abs(p.transform.localRotation.w))
-        //            ||
-        //            (Mathf.Abs(part.transform.localRotation.w) == Mathf.Abs(p.transform.localRotation.w) 
-        //                && part.transform.localRotation.x < p.transform.localRotation.x)
-        //            ;
-        //    }
-        //}
+        public override void OnStart(PartModule.StartState state)
+        {
+            base.OnStart(state);
+
+            if (!HighLogic.LoadedSceneIsFlight) return;
+            if (already_checked) return;
+            already_checked = true;
+
+            if (usesMirrorDeploy) return;
+            // This code is needed due savegames previous from the AA first installation (as well crafts, and also ones
+            // downloaded or copied from other savegames) looses the condiguration when loaded with AA.
+            // Only savegames and crafts made after AA installation have their Control Surfaces settings restoned!
+            // Once this small inconvenience =P is fixed, this code can go away.
+            if (part.symMethod == SymmetryMethod.Mirror &&
+                part.symmetryCounterparts != null &&
+                part.symmetryCounterparts.Count > 0)
+            {
+                usesMirrorDeploy = true;
+                Part p = part.symmetryCounterparts[0];
+                this.mirrorDeploy =
+                    (Mathf.Abs(part.transform.localRotation.w) < Mathf.Abs(p.transform.localRotation.w))
+                    ||
+                    (Mathf.Abs(part.transform.localRotation.w) == Mathf.Abs(p.transform.localRotation.w)
+                        && part.transform.localRotation.x < p.transform.localRotation.x)
+                    ;
+            }
+        }
 
         public override void OnSave(ConfigNode node)
         {
@@ -79,15 +79,16 @@ namespace AtmosphereAutopilot
             // Hack to prevent AA to hijack the savagames and craft files.
             // MODULE sections with name="ModuleControlSurface" not only is ignored by this partModule, but once this is 
             // saved with name="SyncModuleControlSurface", only KSP installments with AA installed will correctly handle it,
-            // and that disconfigure all Contol Surfaces parts when you uninstall AA!!      
+            // and that disconfigure all Contol Surfaces parts when you uninstall AA!!
+
+            // In order to make this stunt to work, we need to intercept the Craft Load and hot-swap ModuleControlSurface to SyncModuleControlSurface
             //node.SetValue("name", "ModuleControlSurface", false);
             //node.SetValue("AtmosphericAutopilot", true, true);
         }
 
         protected override void CtrlSurfaceUpdate(Vector3 vel)
         {
-            if (vessel.transform == null)
-                return;
+            if (vessel.transform == null) return;
 
             this.alwaysRecomputeLift = true;
 
@@ -105,13 +106,13 @@ namespace AtmosphereAutopilot
 
             if (deploy)
             {
-                float target = deployInvert ? 1.0f : -1.0f;                        
+                float target = deployInvert ? 1.0f : -1.0f;
                 if (usesMirrorDeploy && mirrorDeploy) target *= -1.0f;
                 if (!ignorePitch)   prev_pitch_action = target;
                 if (!ignoreRoll)    prev_roll_action = target;
                 if (!ignoreYaw)     prev_yaw_action = target;
                 was_deployed = true;
-                deflection = action = action + Common.Clampf(target - action, spd_factor);
+                deflection = action += Common.Clampf(target - action, spd_factor);
                 ctrlSurface.localRotation = Quaternion.AngleAxis(deflection * ctrlSurfaceRange * 0.01f * authorityLimiter, Vector3.right) * neutral;
                 return;
             }

@@ -28,8 +28,6 @@ using Asset = KSPe.IO.Asset<AtmosphereAutopilot.AtmosphereAutopilot>;
 
 namespace AtmosphereAutopilot
 {
-    using SyncModuleControlSurface = global::AtmosphereAutopilot.ModuleControlSurface; // Gambiarra para minimizar mudanças no código
-    
     [KSPAddon(KSPAddon.Startup.MainMenu, true)]
     public sealed class AtmosphereAutopilot: MonoBehaviour
     {
