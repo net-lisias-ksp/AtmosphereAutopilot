@@ -1,5 +1,7 @@
 # AtmosphereAutopilot :: Change Log
 
+* 2019-1112: 1.5.16 (BorisBarboris) for KSP 1.7.3
+	+ Update for KSP 1.8.0
 * 2019-0715: 1.5.15 (BorisBarboris) for KSP 1.7.3
 	+ Do not replace control surface module for parts that contain "propeller" or "blade" in their name.
 	+ Default 0.95 value for dir_strength.
