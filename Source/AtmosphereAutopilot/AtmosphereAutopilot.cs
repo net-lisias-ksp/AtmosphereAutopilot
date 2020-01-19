@@ -55,7 +55,8 @@ namespace AtmosphereAutopilot
 
         void Start()
         {
-            Log.info("starting up!"); 
+            Log.dbg("starting up for {0}", this.name);
+
             DontDestroyOnLoad(this);
             determine_aerodynamics();
             get_csurf_module();
@@ -141,9 +142,9 @@ namespace AtmosphereAutopilot
                                      select lType);
                     autopilot_module_types.AddRange(lListOfBs);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    Log.info("reflection crash on {0} assembly.", asmbly.FullName);
+                    Log.error(e, "reflection crash on {0} assembly.", asmbly.FullName);
                 }
             }
         }
@@ -182,6 +183,17 @@ namespace AtmosphereAutopilot
 
         void OnDestroy()
         {
+            Log.dbg("OnDestroy {0}", this.name);
+
+            GameEvents.onGameUnpause.Remove(OnApplicationUnpause);
+            GameEvents.onGamePause.Remove(OnApplicationPause);
+            GameEvents.onGUIApplicationLauncherUnreadifying.Remove(onAppLauncherUnload);
+            GameEvents.onGUIApplicationLauncherReady.Remove(onAppLauncherLoad);
+            GameEvents.onShowUI.Remove(OnShowUI);
+            GameEvents.onHideUI.Remove(OnHideUI);
+            GameEvents.onGameSceneLoadRequested.Remove(sceneSwitch);
+            GameEvents.onVesselChange.Remove(vesselSwitch);
+
             serialize_active_modules();
             AtmosphereAutopilot.Instance.BackgroundThread.Stop();
         }

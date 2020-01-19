@@ -55,8 +55,8 @@ namespace AtmosphereAutopilot
             {
                 // move all gimbal modules before engine modules to fix stock error of applying
                 // thrust before turning gimbal
-                var part_configs = GameDatabase.Instance.GetConfigNodes("PART");
-                foreach (var part in part_configs)
+                ConfigNode[] part_configs = GameDatabase.Instance.GetConfigNodes("PART");
+                foreach (ConfigNode part in part_configs)
                 {
                     ConfigNode gimbal_node;
                     if ((gimbal_node = part.nodes.GetNode("MODULE", "name", "ModuleGimbal")) != null)
