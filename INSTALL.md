@@ -37,9 +37,9 @@ The following file layout must be present after installation:
 		ModuleManager.dll
 		...
 	[PluginData]
-		[net.lisias.ksp]
-			[AtmosphereAutopilot]
-				Global_settings.txt
+			[net.lisias.ksp]
+				[AtmosphereAutopilot]
+					Global_settings.txt
 	KSP.log
 	PastDatabase.cfg
 	...
@@ -49,5 +49,6 @@ The following file layout must be present after installation:
 ### Dependencies
 
 * [KSP API Extensions/L](https://github.com/net-lisias-ksp/KSPAPIExtensions)
-	+ Not included
-
+	+ Not Included
+* [KSPUpgradeScriptFix](https://github.com/net-lisias-ksph/KSPUpgradeScriptFix)
+	+ Included
