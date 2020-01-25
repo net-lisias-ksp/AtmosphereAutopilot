@@ -1,5 +1,7 @@
 # AtmosphereAutopilot :: Change Log
 
+* 2020-0125: 1.5.15.2 (Lisias) for 1.4 <= KSP <= 1.7.3
+	+ A very idiotic mistake on handling the pathname for the `Global_settings.cfg` file was detected and fixed. 
 * 2020-0119: 1.5.15.1 (Lisias) for 1.4 <= KSP <= 1.7.3
 	+ Merging updates from upstream
 		- 1.5.12
