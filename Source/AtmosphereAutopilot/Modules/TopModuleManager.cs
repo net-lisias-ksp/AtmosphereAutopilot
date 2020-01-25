@@ -453,7 +453,7 @@ namespace AtmosphereAutopilot
 
             public void Serialize()
             {
-                AutoSerialization.Serialize(this, "settings_wnd", KSPUtil.ApplicationRootPath + "GameData/AtmosphereAutopilot/Global_settings.txt",
+                AutoSerialization.Serialize(this, "settings_wnd", "Global_settings.txt",
                     typeof(GlobalSerializable), OnSerialize);
             }
 
