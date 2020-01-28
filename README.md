@@ -1,14 +1,6 @@
 # AtmosphereAutopilot /L Unofficial
 
-Plugin for Kerbal Space Program.
-
-Original author: Boris-Barboris. Unofficial Fork by Lisias.
-
-Contributors:
-
-* radistmorse (aka Morse on KSP forums) - Neo-GUI design and implementation.
-* CraigCottingham - Cruise flight and speed control GUI refactoring, coordinate input to waypoint mode.
-* Hotel26 - usability fixes for old-GUI Cruise flight waypoint control.
+Plugin for Kerbal Space Program. Unofficial Fork by Lisias.
 
 
 ## In a Hurry
@@ -332,6 +324,15 @@ This work is licensewd under the [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.
 	- You credit the author and republish the copyright notices on your works where the code is used.
 	- You relicense (and fully comply) your works using GPL 2.0 (or later)
 	- You don't mix your work with GPL incompatible works.
+
+See [NOTICE](./NOTICE) for further copyright and trademarks notices.
+
+
+### Contributors
+
+* radistmorse (aka Morse on KSP forums) - Neo-GUI design and implementation.
+* CraigCottingham - Cruise flight and speed control GUI refactoring, coordinate input to waypoint mode.
+* Hotel26 - usability fixes for old-GUI Cruise flight waypoint control.
 
 
 ## UPSTREAM
