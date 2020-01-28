@@ -8,7 +8,11 @@ Plugin for Kerbal Space Program. Unofficial Fork by Lisias.
 * [Latest Release](https://github.com/net-lisias-kspu/AtmosphereAutopilot/releases)
     + [Binaries](https://github.com/net-lisias-kspu/AtmosphereAutopilot/tree/Archive)
 * [Source](https://github.com/net-lisias-kspu/AtmosphereAutopilot)
-* [Change Log](./CHANGE_LOG.md)
+* Documentation
+	+ [Project's README](https://github.com/net-lisias-kspu/AtmosphereAutopilot/blob/master/README.md)
+	+ [Install Instructions](https://github.com/net-lisias-kspu/AtmosphereAutopilot/blob/master/INSTALL.md)
+	+ [Change Log](./CHANGE_LOG.md)
+	+ [Known Issues](./KNOWN_ISSUES.md)
 
 
 ## General description
@@ -299,16 +303,7 @@ Hotkeys:
 
 ## Installation
 
-To install, place the GameData folder inside your Kerbal Space Program folder.
-
-**REMOVE ANY OLD VERSIONS OF THE PRODUCT BEFORE INSTALLING**.
-
-### Dependencies
-<!--
-* Hard Dependencies
-	* [KSP API Extensions/L](https://github.com/net-lisias-ksp/KSPAPIExtensions)
-->
-None at the moment. :)
+Detailed installation instructions are now on its own file (see the [In a Hurry](#in-a-hurry) section) and on the distribution file.
 
 ### Licensing
 This work is licensewd under the [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.txt). See [here](./LICENSE)
